@@ -10,7 +10,7 @@ function processFile({ base, path, relative }, fn) {
     const moduleFile = join(base, relative);
     const moduleName = require.resolve(moduleFile);
     if(require.cache[moduleName] !== void 0) {
-      delete require.cache[moduleName];
+      require.cache[moduleName] = void 0;
     }
     const Component = require(moduleFile);
     const styles = extractStyles(Component);
